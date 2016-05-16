@@ -1,6 +1,6 @@
 package com.doublee.clothes;
 
-import static springfox.documentation.builders.PathSelectors.regex;
+import static springfox.documentation.builders.PathSelectors.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +11,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.google.common.base.Predicate;
+
+import static com.google.common.base.Predicates.*;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.builders.ResponseMessageBuilder;
@@ -25,7 +28,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 @ComponentScan({"com.doublee.clothes.rest", 
 				"com.doublee.clothes.config",
-				"com.doublee.clothes.service"})
+				"com.doublee.clothes.service.impl"})
 public class Application {
 
 	public static void main(String[] args) {
@@ -38,12 +41,17 @@ public class Application {
 			.apiInfo(apiInfo())
 			.select()
 			.apis(RequestHandlerSelectors.any())
-			.paths(regex("/clothes.*"))			
+			.paths(paths())			
 			.build()
 			.useDefaultResponseMessages(false)
 			.globalResponseMessage(RequestMethod.GET, buildMessages());
 	}
-	
+	private Predicate<String> paths() {
+	    return or(
+	        regex("/clothes.*"),
+	        regex("/collections.*")
+	    );
+	}
 	private List<ResponseMessage> buildMessages() {
 		List<ResponseMessage> messages = new ArrayList<ResponseMessage>();
 		ResponseMessage message500 = new ResponseMessageBuilder()

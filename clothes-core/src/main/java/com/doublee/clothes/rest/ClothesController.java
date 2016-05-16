@@ -24,7 +24,7 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 import com.doublee.clothes.model.Clothe;
-import com.doublee.clothes.service.IClotheService;
+import com.doublee.clothes.service.ClotheService;
 
 @Api(value="clothes",
 	 produces="application/json")
@@ -36,7 +36,7 @@ public class ClothesController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ClothesController.class);
 
 	@Autowired
-	private IClotheService clotheService;
+	private ClotheService clotheService;
 		
 	/**
 	 * LIST.

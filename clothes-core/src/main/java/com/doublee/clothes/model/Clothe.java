@@ -5,6 +5,8 @@ import io.swagger.annotations.ApiModelProperty;
 
 import org.springframework.hateoas.ResourceSupport;
 
+import com.doublee.clothes.model.enums.ClotheSize;
+
 @ApiModel
 public class Clothe extends ResourceSupport{
 	
@@ -19,7 +21,7 @@ public class Clothe extends ResourceSupport{
 	private String brand;
 	
 	@ApiModelProperty(notes = "The size of the clothe.", required = true)
-	private String size;
+	private ClotheSize size;
 	
 	@ApiModelProperty(notes = "The color of the clothe.", required = true)
 	private String color;
@@ -55,11 +57,11 @@ public class Clothe extends ResourceSupport{
 		this.brand = brand;
 	}
 		
-	public String getSize() {
+	public ClotheSize getSize() {
 		return size;
 	}
 	
-	public void setSize(String size) {
+	public void setSize(ClotheSize size) {
 		this.size = size;
 	}
 		
