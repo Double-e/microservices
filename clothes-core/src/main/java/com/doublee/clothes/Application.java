@@ -68,7 +68,7 @@ public class Application {
 	      .build();
 		ResponseMessage message404 = new ResponseMessageBuilder()
 	      .code(404)
-	      .message("404 Resource Does not Exist.")
+	      .message("404 Clothe Not Found.")
 	      .responseModel(new ModelRef("Error"))
 	      .build();
 		ResponseMessage message405 = new ResponseMessageBuilder()

@@ -65,6 +65,8 @@ public class ClotheServiceImpl implements ClotheService {
 	 */
 	@Override
 	public Clothe find(int index) {
+		if (index > this.clothes.size())
+			return null;
 		return this.clothes.get(index);
 	}
 	
