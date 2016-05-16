@@ -27,9 +27,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @EnableSwagger2
 @ComponentScan(
-  {"com.doublee.clothes.controllers", 
-   "com.doublee.clothes.config",
-   "com.doublee.clothes.service"}
+  {"com.doublee.collections.controllers", 
+   "com.doublee.collections.config",
+   "com.doublee.collections.service"}
 )
 public class Application {
 

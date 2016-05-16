@@ -2,8 +2,6 @@ package com.doublee.collections.model;
 
 import io.swagger.annotations.ApiModelProperty;
 
-import java.util.List;
-
 import org.springframework.hateoas.ResourceSupport;
 
 public class Collection extends ResourceSupport{
