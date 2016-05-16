@@ -1,0 +1,8 @@
+server:
+  port: 8000
+  
+info:
+  component: 'Clothes microservice for Double.'
+  
+management:
+  context-path: /console
