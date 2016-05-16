@@ -5,8 +5,6 @@ import io.swagger.annotations.ApiModelProperty;
 
 import org.springframework.hateoas.ResourceSupport;
 
-import com.doublee.clothes.model.enums.ClotheSize;
-
 @ApiModel
 public class Clothe extends ResourceSupport{
 	

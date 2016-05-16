@@ -1,4 +1,4 @@
-package com.doublee.clothes.model.enums;
+package com.doublee.clothes.model;
 
 public enum ClotheSize {
 	S,

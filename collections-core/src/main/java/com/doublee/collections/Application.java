@@ -1,6 +1,7 @@
-package com.doublee.clothes;
+package com.doublee.collections;
 
-import static springfox.documentation.builders.PathSelectors.*;
+import static com.google.common.base.Predicates.or;
+import static springfox.documentation.builders.PathSelectors.regex;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.google.common.base.Predicate;
 
-import static com.google.common.base.Predicates.*;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.builders.ResponseMessageBuilder;
@@ -50,7 +50,7 @@ public class Application {
 	}
 	private Predicate<String> paths() {
 	    return or(
-	        regex("/clothes.*"),
+	        regex("/collections.*"),
 	        regex("/other.*")
 	    );
 	}
@@ -94,5 +94,4 @@ public class Application {
 			.build();
 			
 	}
-
 }

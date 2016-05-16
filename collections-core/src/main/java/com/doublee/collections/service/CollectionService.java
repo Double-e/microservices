@@ -1,8 +1,8 @@
-package com.doublee.clothes.service;
+package com.doublee.collections.service;
 
 import java.util.List;
 
-import com.doublee.clothes.model.Collection;
+import com.doublee.collections.model.Collection;
 
 public interface CollectionService {
 

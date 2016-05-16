@@ -1,4 +1,4 @@
-package com.doublee.clothes.model;
+package com.doublee.collections.model;
 
 import io.swagger.annotations.ApiModelProperty;
 
@@ -13,9 +13,6 @@ public class Collection extends ResourceSupport{
 	
 	@ApiModelProperty(notes = "The name of the collection.", required = true)
 	private String name;
-	
-	@ApiModelProperty(notes = "The clothes in the collection.", required = true)
-	private List<Clothe> clothes;
 	
 	public Collection(){ super(); }
 	
@@ -35,12 +32,4 @@ public class Collection extends ResourceSupport{
 		this.name = name;
 	}
 	
-	public List<Clothe> getClothes() {
-		return clothes;
-	}
-	
-	public void setClothes(List<Clothe> clothes) {
-		this.clothes = clothes;
-	}
-
 }

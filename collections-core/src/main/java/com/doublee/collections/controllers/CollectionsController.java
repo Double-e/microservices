@@ -1,12 +1,13 @@
-package com.doublee.clothes.rest;
+package com.doublee.collections.controllers;
 
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -20,15 +21,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
+import com.doublee.collections.model.Collection;
+import com.doublee.collections.service.CollectionService;
 
-import com.doublee.clothes.model.Clothe;
-import com.doublee.clothes.model.Collection;
-import com.doublee.clothes.service.CollectionService;
 
-@Api(value="collections",
-produces="application/json")
+@Api(value="collections", produces="application/json")
 @RestController
 @RequestMapping(value="/collections", 
 			produces=MediaType.APPLICATION_JSON_UTF8_VALUE)

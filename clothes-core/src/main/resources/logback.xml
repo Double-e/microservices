@@ -7,17 +7,17 @@
       </pattern>
     </encoder>
   </appender>
-  <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+  <!-- <appender name="FILE" class="ch.qos.logback.core.FileAppender">
     <file>D:/double/logs/ClothesController.log</file>
     <append>false</append>
     <encoder>
       <pattern>%-5relative %-5level %logger{35} - %msg%n</pattern>
     </encoder>
-  </appender>
+  </appender> -->
 
   <!-- Setting the root level of logging to INFO -->
   <root level="info">
     <appender-ref ref="STDOUT" />
-    <appender-ref ref="FILE" />
+   <!-- <appender-ref ref="FILE" /> -->
   </root>
 </configuration>

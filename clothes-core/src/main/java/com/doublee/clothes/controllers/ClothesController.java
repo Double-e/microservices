@@ -1,5 +1,7 @@
-package com.doublee.clothes.rest;
+package com.doublee.clothes.controllers;
 
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -20,17 +22,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
-
 import com.doublee.clothes.model.Clothe;
 import com.doublee.clothes.service.ClotheService;
+ 
 
-@Api(value="clothes",
-	 produces="application/json")
+
+@Api(
+  value="clothes",
+  produces="application/json"
+)
 @RestController
-@RequestMapping(value="/clothes", 
-				produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+@RequestMapping(
+  value="/clothes", 
+  produces=MediaType.APPLICATION_JSON_UTF8_VALUE
+)
 public class ClothesController {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(ClothesController.class);
@@ -97,7 +102,8 @@ public class ClothesController {
 	  }
 	)
 	@RequestMapping(
-	  method=RequestMethod.POST
+	  method=RequestMethod.POST,
+	  consumes=MediaType.APPLICATION_JSON_UTF8_VALUE
 	)
 	@ResponseStatus(HttpStatus.CREATED)
 	public Clothe create(
@@ -134,7 +140,7 @@ public class ClothesController {
 	@ResponseStatus(HttpStatus.OK)
 	public Clothe delete(
 	  @ApiParam(value="Id to delete for", required=true)
-	  @PathVariable(value="id")
+	  @PathVariable
 		final String id) {
 		
 		LOGGER.info("DELETE /clothes/{} - delete clothe.", id);
@@ -169,7 +175,7 @@ public class ClothesController {
 	@ResponseStatus(HttpStatus.OK)
 	public Clothe detail(
 	  @ApiParam(value="Id to lookup for", required=true)
-	  @PathVariable(value="id")
+	  @PathVariable
 	    final String id) 
 	{
 		LOGGER.info("GET /clothes/{} - get clothe detail.", id);
@@ -200,13 +206,14 @@ public class ClothesController {
 	)
 	@RequestMapping(
 	  value="/{id}",
-	  method=RequestMethod.PUT
+	  method=RequestMethod.PUT,
+	  consumes=MediaType.APPLICATION_JSON_UTF8_VALUE
 	)
 	@ResponseStatus(HttpStatus.OK)
 	public Clothe update(
 	  @ApiParam(value="Id to update for", required=true)
-	  @PathVariable(value="id")
-		final String id,
+	  @PathVariable 
+	  final String id,
 	  @ApiParam(value="Clothe updated", required=true)
 	  @RequestBody 
 	    final Clothe clotheUpd) 

@@ -1,4 +1,4 @@
-package com.doublee.clothes.service.impl;
+package com.doublee.clothes.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,8 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.doublee.clothes.model.Clothe;
-import com.doublee.clothes.model.enums.ClotheSize;
-import com.doublee.clothes.service.ClotheService;
+import com.doublee.clothes.model.ClotheSize;
 
 @Service
 public class ClotheServiceImpl implements ClotheService {
