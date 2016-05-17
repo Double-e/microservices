@@ -6,3 +6,7 @@ info:
   
 management:
   context-path: /console
+  
+  
+api:
+  key: "GABERALMUR"
