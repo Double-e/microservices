@@ -5,7 +5,7 @@ info:
   component: 'Clothes microservice for Double.'
   
 management:
-  context-path: /console
+  context-path: /manage
   
   
 api:

@@ -1,8 +1,0 @@
-server:
-  port: ${PORT:8001}
-  
-info:
-  component: 'Collections microservice for Double.'
-  
-management:
-  context-path: /console

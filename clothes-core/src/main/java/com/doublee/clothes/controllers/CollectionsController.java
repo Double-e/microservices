@@ -2,11 +2,6 @@ package com.doublee.clothes.controllers;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
 
 import java.util.List;
 
@@ -24,48 +19,36 @@ import org.springframework.web.bind.annotation.RestController;
 import com.doublee.clothes.model.Collection;
 import com.doublee.clothes.service.CollectionService;
 
-
-@Api(value="collections", produces="application/json")
 @RestController
-@RequestMapping(value="/collections", 
-			produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+@RequestMapping(value = "/collections", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class CollectionsController {
+
+	///////////////////////////////////////////////////////////////////////////////	
+	// ATRIBUTES //////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////	
+	
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(CollectionsController.class);
 
 	@Autowired
 	private CollectionService collectionService;
-		
+	
+	
+	
+	///////////////////////////////////////////////////////////////////////////////	
+	// METHODS ////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////	
+
+
 	/**
-	 * LIST.
-	 * @return the list of clothes in the System.
+	 * LIST OF COLLECTIONS.
+	 * @return THE LIST OF COLLECTIONS.
 	 */
-	@ApiOperation(
-	  value="List Collections", 
-	  notes="List all the collections without any filter applied."
-	)
-	@ApiResponses(value= 
-      {
-	    @ApiResponse(
-	      code=200, 
-		  message="Successfully Retrieved Collection List.", 
-		  response=Collection.class, 
-		  responseContainer="Collection"
-	    ),
-	    @ApiResponse(
-	  	  code=500, 
-	  	  message="Internal Server Error - Collections."
-	  	)
-	  }
-	)
-	@RequestMapping(
-	  value="",
-	  method=RequestMethod.GET
-	)
+	@RequestMapping(method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
-	public List<Collection> list() 
-	{
-		LOGGER.info("GET /collections - retrieving list of collections.");
+	public List<Collection> list() {
+		
+		LOGGER.info("GET /collections : list().");
 		
 		List<Collection> collections = collectionService.listAll();
 		
@@ -76,37 +59,19 @@ public class CollectionsController {
 		return collections;
 	}
 	
+	
+	
 	/**
-	 * DETAIL.
-	 * @param id
-	 * @return
+	 * GET THE DETAIL OF THE COLLECTION.
+	 * @param code: THE CODE OF THE COLLECTION.
+	 * @return THE FOUND COLLECTION OR NFE.
 	 */
-	@ApiOperation(
-	  value="Get Collection", 
-	  notes="Show just one collection by its given Id."
-	)
-	@ApiResponses(value= 
-      {
-	    @ApiResponse(
-	      code=200, 
-		  message="Successfully Retrieved Collection.", 
-		  response=Collection.class
-		)
-	  }
-	)
-	@RequestMapping(
-	  value="/{id}",
-	  method=RequestMethod.GET
-	)
+	@RequestMapping(value = "/{code}", method=RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
-	public Collection detail(
-	  @ApiParam(value="Id to lookup for", required=true)
-	  @PathVariable(value="id")
-	    final String id) 
+	public Collection detail(@PathVariable final String code) 
 	{
-		LOGGER.info("GET /clothes/{} - get clothe detail.", id);
+		LOGGER.info("GET /clothes/{} - detail().", code);
 		
-		// returning clothe.
-		return collectionService.find(Integer.parseInt(id));
+		return collectionService.find(Integer.parseInt(code));
 	}
 }
